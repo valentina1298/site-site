@@ -5,3 +5,10 @@ body {
             background-color: #fce4ec; /* Cor de fundo suave */
             color: #333;
         }
+
+        header {
+            background-color: #ff69b4; /* Cor rosa vibrante */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
