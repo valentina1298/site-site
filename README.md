@@ -8,4 +8,4 @@
 **! By: [! richinnersoul](https://guns.lol/richinnersoul)**
 
 
-<a href="#"><img width="100%" src="https://cdn.discordapp.com/attachments/1395973519170605160/1406416933687136256/482ab59926558221162754695030cbac.jpg?ex=68a26356&is=68a111d6&hm=1f9a8aee0786c969e78104b086de899703859681d9945c3c065a550205eac4c1&"/></a>
+<a href="#"><img width="100%" src="https://media.discordapp.net/attachments/1395973519170605160/1406417221332373515/4fe88df161b3d80ef3696cfffdc8c42c.jpg?ex=68a2639b&is=68a1121b&hm=b33b87637f671a2bf7c52b8c5956ca26fecfaaddc755b50cd9126d698b315e6c&=&format=webp"/></a>
