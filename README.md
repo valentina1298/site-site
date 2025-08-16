@@ -4,6 +4,7 @@
  
 
 **Desenvolvidor por: Valentina.**
+
 **!by:[! richinnersoul](https://guns.lol/richinnersoul)**
 
 
