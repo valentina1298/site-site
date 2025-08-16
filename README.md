@@ -8,4 +8,4 @@
 **! By: [! richinnersoul](https://guns.lol/richinnersoul)**
 
 
-<a href="#"><img width="100%" src="https://e1.pngegg.com/pngimages/510/531/png-clipart-hello-kitty-s-hello-kitty.png"/></a>
+<a href="#"><img width="100%" src=""/></a>
