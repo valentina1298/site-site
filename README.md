@@ -8,4 +8,4 @@
 **! By: [! richinnersoul](https://guns.lol/richinnersoul)**
 
 
-<a href="#"><img width="100%" src=""/></a>
+<a href="#"><img width="100%" src="https://f.i.uol.com.br/fotografia/2024/10/28/17301525896720088d065aa_1730152589_3x2_xl.jpg"/></a>
