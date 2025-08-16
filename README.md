@@ -8,4 +8,4 @@
 **! By: [! richinnersoul](https://guns.lol/richinnersoul)**
 
 
-<a href="#"><img width="100%" src="https://w7.pngwing.com/pngs/787/162/png-transparent-hello-kitty-hello-kitty-cartoon-desktop-wallpaper-character-thumbnail.png"/></a>
+<a href="#"><img width="100%" src="https://e1.pngegg.com/pngimages/510/531/png-clipart-hello-kitty-s-hello-kitty.png"/></a>
