@@ -1,36 +1,350 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>confeitaria de bolos</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Receitas Kawaii • Hello Kitty Theme (Fanmade)</title>
+  <meta name="description" content="Site de receitas temático estilo Hello Kitty (fanmade), com busca, filtros, favoritos e newsletter." />
+  <style>
+    /* ====== Paleta & Reset ====== */
+    :root{
+      --rose-50:#fff1f5; --rose-100:#ffe4eb; --rose-200:#fecdd3; --rose-300:#fda4af; --rose-400:#fb7185; --rose-500:#f43f5e;
+      --pink-50:#ffeef7; --pink-100:#ffd6ea; --pink-200:#ffbfe0; --pink-300:#ffa6d1; --pink-400:#ff8ac4; --pink-500:#ff70b6;
+      --red:#e11d48; --yellow:#fbbf24; --blue:#60a5fa; --slate-700:#334155; --slate-500:#64748b; --white:#ffffff;
+      --bg: var(--pink-50); --card: var(--white); --text: #4b5563; --muted:#6b7280; --ring: var(--pink-300);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif;color:var(--text);}
+    body{background:linear-gradient(180deg,var(--bg),#fff);}
+    img{max-width:100%;display:block}
+    a{color:inherit}
+    .container{max-width:1152px;margin-inline:auto;padding:24px}
+
+    /* ====== Branding Header ====== */
+    header{
+      position:sticky;top:0;z-index:20;background:rgba(255,255,255,.8);backdrop-filter:blur(8px);
+      border-bottom:1px solid #ffe0ec
+    }
+    .brand{display:flex;align-items:center;gap:12px;padding:14px 24px}
+    .brand-logo{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 30%, var(--pink-300), var(--pink-500));
+      position:relative;box-shadow:0 8px 18px rgba(255,112,182,.35)}
+    /* lacinho */
+    .brand-logo:before,.brand-logo:after{content:"";position:absolute;top:8px;width:16px;height:12px;border:3px solid var(--red);border-radius:50%}
+    .brand-logo:before{left:6px}
+    .brand-logo:after{left:22px}
+    .brand-title{font-size:clamp(1.1rem,2.2vw,1.6rem);font-weight:800;color:#d22a59;letter-spacing:.2px}
+
+    nav{display:flex;gap:10px;flex-wrap:wrap;padding:0 24px 16px 24px}
+    .chip{border:1px solid #ffd0e3;background:var(--rose-50);padding:8px 12px;border-radius:999px;font-weight:600;cursor:pointer}
+    .chip[aria-pressed="true"]{background:var(--pink-200);border-color:var(--pink-400)}
+
+    /* ====== Hero ====== */
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center}
+    .hero-card{background:var(--card);border:1px solid #ffe3ef;border-radius:24px;padding:22px;box-shadow:0 12px 28px rgba(255,112,182,.15)}
+    .hero h1{margin:0 0 8px 0;font-size:clamp(1.2rem,3.5vw,2rem);color:#cf1550}
+    .hero p{margin:0;color:var(--muted)}
+    .searchbar{display:flex;gap:10px;margin-top:14px}
+    .input{flex:1;border:2px solid #ffd0e3;border-radius:14px;padding:12px 14px;font-size:1rem;outline:none}
+    .input:focus{border-color:var(--ring);box-shadow:0 0 0 4px #ffd6ea}
+    .btn{border:none;background:var(--pink-500);color:white;font-weight:700;padding:12px 16px;border-radius:14px;cursor:pointer;box-shadow:0 8px 16px rgba(255,112,182,.35)}
+    .btn:active{transform:translateY(1px)}
+
+    /* ====== Grid de Cards ====== */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:24px}
+    .card{grid-column:span 4;background:var(--card);border:1px solid #ffe3ef;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:10px;box-shadow:0 6px 18px rgba(255,112,182,.12)}
+    .card h3{margin:0;font-size:1.05rem;color:#cf1550}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--rose-100);border:1px solid #ffd0e3;font-size:.85rem;font-weight:700}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--slate-500);font-size:.9rem}
+    .actions{margin-top:auto;display:flex;gap:8px}
+    .ghost{background:var(--rose-50);color:#b91c1c}
+    .fav[aria-pressed="true"]{background:var(--yellow);color:#7c2d12}
+
+    /* ====== Aside ====== */
+    .aside{grid-column:span 4}
+    .aside .panel{background:var(--card);border:1px solid #ffe3ef;border-radius:20px;padding:16px;box-shadow:0 6px 18px rgba(255,112,182,.1)}
+
+    /* ====== Newsletter ====== */
+    .newsletter{display:flex;gap:10px;margin-top:10px}
+    .note{font-size:.9rem;color:var(--muted)}
+
+    /* ====== Footer ====== */
+    footer{margin-top:40px;padding:28px;border-top:1px dashed #ffd0e3;color:var(--muted);text-align:center}
+
+    /* ====== Responsivo ====== */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .card{grid-column:span 6}
+      .aside{grid-column:span 12}
+    }
+    @media (max-width: 640px){
+      .grid{grid-template-columns:repeat(6,1fr)}
+      .card{grid-column:span 6}
+      nav{overflow:auto}
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Bem-vindo à nossa Confeitaria!</h1>
-        <p>Bolos feitos com carinho e sabor.</p>
-    </header>
-    <div class="container">
-        <h2>Nossos Bolos</h2>
-        <div class="bolo">
-            <h3>Bolo de Chocolate com Morango</h3>
-            <img src="https://via.placeholder.com/400x300.png?text=Bolo+de+Chocolate" alt="Bolo de Chocolate">
-            <p>Um clássico irresistível, com massa fofinha de chocolate e recheio cremoso de morango.</p>
-        </div>
-        <div class="bolo">
-            <h3>Bolo de Limão</h3>
-            <img src="https://via.placeholder.com/400x300.png?text=Bolo+de+Limao" alt="Bolo de Limão">
-            <p>Perfeito para os dias quentes! Leve, refrescante e com um toque cítrico.</p>
-        </div>
-        <div class="bolo">
-            <h3>Bolo Red Velvet</h3>
-            <img src="https://via.placeholder.com/400x300.png?text=Bolo+Red+Velvet" alt="Bolo Red Velvet">
-            <p>O famoso bolo aveludado, com massa vermelha vibrante e cobertura de cream cheese.</p>
-        </div>
-        </div>
-        <footer>
-        <p>&copy; 2025 Sua Confeitaria. Todos os direitos reservados.</p>
-    </footer>
+  <header>
+    <div class="brand">
+      <div class="brand-logo" aria-hidden="true"></div>
+      <div>
+        <div class="brand-title">Receitas Kawaii</div>
+        <div style="font-size:.9rem;color:var(--muted);font-weight:600">fanmade • estilo Hello Kitty</div>
+      </div>
+    </div>
+    <nav class="container" aria-label="Categorias principais">
+      <button class="chip" data-filter="todas" aria-pressed="true">Todas</button>
+      <button class="chip" data-filter="doces">Doces fofinhos</button>
+      <button class="chip" data-filter="rapidas">Rápidas p/ crianças</button>
+      <button class="chip" data-filter="tematicas">Temáticas</button>
+      <button class="chip" data-filter="sazonais">Sazonais</button>
+      <button class="chip" data-filter="salgados">Salgados</button>
+    </nav>
+  </header>
 
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Receita da Semana: <span aria-live="polite" id="weeklyTitle">Cupcake de Morango com Lacinho</span> 🧁🎀</h1>
+        <p>Descubra receitas kawaii com passo a passo simples, filtros por categoria e um toque de fofura. Salve seus favoritos e receba a <strong>Cartinha da Kitty</strong> por e‑mail.</p>
+        <div class="searchbar" role="search">
+          <input id="q" class="input" placeholder="Buscar por ingrediente, nome ou categoria…" aria-label="Buscar receitas" />
+          <button id="clear" class="btn ghost" aria-label="Limpar busca">Limpar</button>
+          <button id="search" class="btn" aria-label="Buscar">Buscar</button>
+        </div>
+        <p class="note">Dica: experimente pesquisar por <em>morango</em>, <em>bento</em> ou <em>lacinho</em>.</p>
+      </div>
+      <aside class="hero-card" aria-labelledby="dicaTitle">
+        <h2 id="dicaTitle">Dica da Kitty 💌</h2>
+        <p>Para deixar tudo brilhando, pincele <strong>glacê espelhado</strong> no final. E finalize com um mini lacinho de pasta americana.</p>
+        <div class="newsletter">
+          <input id="email" class="input" type="email" placeholder="Seu e‑mail" aria-label="E-mail" />
+          <button id="subscribe" class="btn">Assinar</button>
+        </div>
+        <p id="newsStatus" class="note" role="status" aria-live="polite"></p>
+      </aside>
+    </section>
+
+    <section class="grid" id="results" aria-live="polite" aria-busy="false"></section>
+
+    <section class="grid" style="margin-top:12px">
+      <div class="aside">
+        <div class="panel">
+          <h3 style="margin-top:0">Favoritos ⭐</h3>
+          <div id="favsEmpty" class="note">Você ainda não salvou nada. Clique em ⭐ nos cards.</div>
+          <div id="favs" class="grid" style="grid-template-columns:repeat(12,1fr);gap:12px"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>Projeto de fã, sem afiliação à Sanrio. Não usa imagens oficiais. Você pode adaptar as cores/elementos para um tema genérico se preferir.</small>
+  </footer>
+
+  <script>
+  // ====== Dados de exemplo (substitua depois por CMS/Markdown) ======
+  const RECIPES = [
+    {
+      id:'cupcake-morango',
+      title:'Cupcake de Morango com Lacinho',
+      category:'doces',
+      time:25,
+      yield:'10 unidades',
+      difficulty:'Fácil',
+      hero:"🧁",
+      steps:[
+        'Bata manteiga + açúcar; acrescente ovos e essência de baunilha.',
+        'Adicione farinha e leite; incorpore morangos picados.',
+        'Asse a 180°C por 18–20 min. Decore com glacê rosa e lacinho.'
+      ],
+      tips:'Finalize com glitter comestível para o efeito glossy.'
+    },
+    {
+      id:'bento-fofinho',
+      title:'Bentô Kawaii de Sanduíche',
+      category:'rapidas',
+      time:12,
+      yield:'1 porção',
+      difficulty:'Muito fácil',
+      hero:"🥪",
+      steps:[
+        'Corte pão em formato oval; queijo e presunto em formato de laço.',
+        'Monte camadas e adicione tomatinhos e frutas.',
+        'Use folha de alga para olhinhos (opcional).'
+      ],
+      tips:'Caixa de bentô rosa deixa tudo temático.'
+    },
+    {
+      id:'gelatina-leitosinha',
+      title:'Gelatina Leitosinha Rosa',
+      category:'tematicas',
+      time:90,
+      yield:'6 taças',
+      difficulty:'Fácil',
+      hero:"🍮",
+      steps:['Hidrate a gelatina de morango.','Misture com leite condensado e creme de leite.','Leve à geladeira até firmar.'],
+      tips:'Sirva com chantilly e confeitos coração.'
+    },
+    {
+      id:'cookies-corujao',
+      title:'Cookies de Baunilha com Gotas',
+      category:'doces',
+      time:20,
+      yield:'16 unid.',
+      difficulty:'Fácil',
+      hero:"🍪",
+      steps:['Manteiga + açúcar, depois ovos.','Farinha, fermento e gotas de chocolate.','Asse 12–14 min.'],
+      tips:'Formato de lacinho usando dois círculos e um retângulo.'
+    },
+    {
+      id:'risoto-rosado',
+      title:'Risoto Rosado de Beterraba',
+      category:'salgados',
+      time:35,
+      yield:'3 porções',
+      difficulty:'Médio',
+      hero:"🍽️",
+      steps:['Refogue cebola, arroz arbóreo e vinho branco.','Caldo aos poucos + purê de beterraba.','Finalize com manteiga e parmesão.'],
+      tips:'Tom rosado combina com o tema.'
+    },
+    {
+      id:'panetone-cereja',
+      title:'Mini Panetone de Cereja (Natal)',
+      category:'sazonais',
+      time:120,
+      yield:'4 unid.',
+      difficulty:'Médio',
+      hero:"🎄",
+      steps:['Massa doce com fermentação.','Incorpore cerejas e gotas.','Asse e glaceie com laços vermelhos.'],
+      tips:'Use forminhas individuais com laço.'
+    }
+  ];
+
+  // ====== Utilidades ======
+  const $ = (sel,el=document)=>el.querySelector(sel);
+  const $$ = (sel,el=document)=>[...el.querySelectorAll(sel)];
+  const state = { q:'', filter:'todas', favs: new Set(JSON.parse(localStorage.getItem('favs')||'[]')) };
+
+  function saveFavs(){ localStorage.setItem('favs', JSON.stringify([...state.favs])); }
+
+  function iconBadge(cat){
+    const map={doces:'🧁',rapidas:'⏱️',tematicas:'🎀',sazonais:'🗓️',salgados:'🍲'};
+    return map[cat]||'🍽️';
+  }
+
+  // Renderização de Cards
+  function renderList(){
+    const wrap = $('#results');
+    wrap.setAttribute('aria-busy','true');
+    wrap.innerHTML = '';
+    const norm = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+    const match = r => {
+      const qn = norm(state.q);
+      const hay = norm([r.title,r.category,r.tips, ...(r.steps||[])].join(' '));
+      const passQ = !qn || hay.includes(qn);
+      const passF = state.filter==='todas' || r.category===state.filter;
+      return passQ && passF;
+    };
+    const list = RECIPES.filter(match);
+    list.forEach(r=>wrap.appendChild(card(r)));
+    if(list.length===0){
+      wrap.innerHTML = `<div class="hero-card" style="grid-column:1/-1">Nenhuma receita encontrada. Tente outra busca ✨</div>`;
+    }
+    wrap.setAttribute('aria-busy','false');
+    renderFavs();
+  }
+
+  function card(r){
+    const el = document.createElement('article');
+    el.className='card';
+    el.innerHTML = `
+      <div class="badge" title="Categoria">${iconBadge(r.category)} <span>${r.category}</span></div>
+      <h3>${r.title}</h3>
+      <div style="font-size:42px;line-height:1">${r.hero}</div>
+      <div class="meta">
+        <span>⏱️ ${r.time} min</span>
+        <span>👩‍🍳 ${r.difficulty}</span>
+        <span>🍽️ ${r.yield}</span>
+      </div>
+      <details>
+        <summary>Modo de preparo</summary>
+        <ol>${r.steps.map(s=>`<li>${s}</li>`).join('')}</ol>
+        <p><strong>Dica:</strong> ${r.tips}</p>
+      </details>
+      <div class="actions">
+        <button class="btn ghost" data-open="${r.id}">Ver</button>
+        <button class="btn fav" aria-pressed="${state.favs.has(r.id)}" data-fav="${r.id}">⭐</button>
+        <button class="btn" data-copy="${r.id}">Copiar</button>
+      </div>`;
+    return el;
+  }
+
+  function renderFavs(){
+    const wrap = $('#favs');
+    const empty = $('#favsEmpty');
+    wrap.innerHTML='';
+    const items = RECIPES.filter(r=>state.favs.has(r.id));
+    empty.style.display = items.length? 'none':'block';
+    items.forEach(r=>{
+      const el=document.createElement('div');
+      el.style.gridColumn='span 6';
+      el.className='card';
+      el.innerHTML = `<h3 style="margin:0;font-size:1rem">${r.title}</h3><div style="font-size:32px">${r.hero}</div><div class="meta"><span>⏱️ ${r.time} min</span></div>`;
+      wrap.appendChild(el);
+    });
+  }
+
+  // ====== Eventos ======
+  $('#search').addEventListener('click',()=>{ state.q = $('#q').value.trim(); renderList(); });
+  $('#clear').addEventListener('click',()=>{ $('#q').value=''; state.q=''; renderList(); });
+  $('#q').addEventListener('keydown',(e)=>{ if(e.key==='Enter'){ state.q=e.target.value.trim(); renderList(); }});
+
+  $$('.chip').forEach(ch=>{
+    ch.addEventListener('click',()=>{
+      state.filter = ch.dataset.filter;
+      $$('.chip').forEach(x=>x.setAttribute('aria-pressed','false'));
+      ch.setAttribute('aria-pressed','true');
+      renderList();
+    });
+  });
+
+  document.addEventListener('click',e=>{
+    const fav = e.target.closest('[data-fav]');
+    if(fav){
+      const id = fav.dataset.fav;
+      if(state.favs.has(id)) state.favs.delete(id); else state.favs.add(id);
+      saveFavs();
+      fav.setAttribute('aria-pressed', state.favs.has(id));
+      renderFavs();
+    }
+    const copyBtn = e.target.closest('[data-copy]');
+    if(copyBtn){
+      const id = copyBtn.dataset.copy;
+      const r = RECIPES.find(x=>x.id===id);
+      const text = `# ${r.title}\nTempo: ${r.time} min | Rendimento: ${r.yield} | Dificuldade: ${r.difficulty}\n\nPasso a passo:\n- ${r.steps.join('\n- ')}\n\nDica: ${r.tips}`;
+      navigator.clipboard.writeText(text).then(()=>{
+        copyBtn.textContent='Copiado!';
+        setTimeout(()=>copyBtn.textContent='Copiar',1200);
+      });
+    }
+  });
+
+  // Newsletter
+  $('#subscribe').addEventListener('click',()=>{
+    const email = $('#email').value.trim();
+    const status = $('#newsStatus');
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+      status.textContent='Digite um e‑mail válido.'; return;
+    }
+    // demo local
+    localStorage.setItem('newsletter_email', email);
+    status.textContent='Obrigada! Você está na Cartinha da Kitty. 💌';
+    $('#email').value='';
+  });
+
+  // Inicialização
+  renderList();
+  </script>
 </body>
 </html>
