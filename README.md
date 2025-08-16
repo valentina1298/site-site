@@ -1,4 +1,4 @@
-<a href=#><img width= "100%" scr= "https://www.google.com/url?sa=i&url=https%3A%2F%2Foglobo.globo.com%2Fcultura%2Ftelevisao%2Fserie-da-bbc-sobre-jair-bolsonaro-conta-ascensao-da-obscuridade-no-brasil-1-25150746&psig=AOvVaw2zoDyvG58EVLaFhUWruZLG&ust=1755470454866000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCMjB_pGzkI8DFQAAAAAdAAAAABAE"/></a>  
+<a href=#><img width= "100%" scr= "https://capsule-render.vercel.app/api?type=waving&height=150&color=0000FF&text=Os+menor+da+divisa&fontColor=FFFFFF&fontAlign=50&fontAlignY=30&fontSize=35"/></a>  
 
 
 
