@@ -6,4 +6,4 @@
 **Desenvolvidor por: Valentina.**
 
 
-<a href="#"><img width="100%" src="https://imgur.com/ZezVie9"/></a>
+<a href="#"><img width="100%" src="https://imgur.com/FhaN3bT"/></a>
