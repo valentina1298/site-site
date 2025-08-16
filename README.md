@@ -1,1 +1,1 @@
-# site-site
+Site de receitas da Hello Kity.
