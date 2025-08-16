@@ -61,7 +61,13 @@ h2 {
 
 .recipe-card ul {
   padding-left: 20px;
+} 
+
+{
+    <link rel="stylesheet" href="estilo.css" />
 }
+
+
 
 footer {
   margin-top: 40px;
