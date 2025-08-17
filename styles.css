@@ -2,8 +2,8 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #ffeaf4;
-  text-align: c;
-  color: #ffffff;
+  text-align: center;
+  color: #d6336c;
 }
 
 header {
@@ -96,7 +96,7 @@ nav {
   padding: 8px 16px;
   border-radius: 8px;
   font-weight: bold;
-  transition: background 0.3s;
+  transition: background 5.3s;
 }
 
 .botao:hover {
