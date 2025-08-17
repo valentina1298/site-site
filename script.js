@@ -37,7 +37,9 @@ document.addEventListener('DOMContentLoaded', function(){
      alternaContraste.addEventListener('click', function(){
          document.body.classList.toggle('alto-contraste')
      })
- 
+
+ document.getElementById('inicioBtn').addEventListener('click', function(event) {
+  alert('Você clicou no botão Início!');
  
  })
  
