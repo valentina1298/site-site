@@ -1,3 +1,7 @@
+// script.js
+console.log("O JavaScript está funcionando!");
+
+
 document.addEventListener('DOMContentLoaded', function(){
     const botaoDeAcessibilidade = document.getElementById('botao-acessibilidade')
     const opcoesDeAcessibilidade = document.getElementById('opcoes-acessibilidade')
