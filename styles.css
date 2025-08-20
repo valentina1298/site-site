@@ -8,16 +8,15 @@ body {
 
 header {
   background: #ffb6d9;
-  padding: 20px;
-  font-size: 24px;
-  font-weight: bold;
-  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+  padding: 20px;                                   /*espaçamento interno */       
+  font-weight: bold;                                 /*espessura do texto */ 
+  box-shadow: 0 2px 6px rgba(0,0,0,.1);              /*colocar sombra nos elemento (caixas...)*/ 
 }
 
 .container {
   max-width: 900px;
   margin: 40px auto;
-  padding: 20px;
+  padding: 20px;                                  
   background: white;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0,0,0,.1);
